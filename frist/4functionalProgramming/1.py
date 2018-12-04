@@ -32,4 +32,24 @@ def pro(x,y):
 print(reduce(pro , [3, 5, 7, 9]))
 
 def str2float(s):
-    pass
+    n = s.find(".")
+    n = len(s)-n
+    def fn(x,y):
+        if y == -1:
+            return x
+        else:
+            return x * 10 + y
+    def char2num(m):
+        DIGITS = {'0': 0, '1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9}
+        if m == ".":
+            return -1
+        else:
+            return DIGITS[m]
+    mm = map(char2num , s)
+    sum = 1
+    for x in range(n-1 ):
+        sum = sum * 10
+    return reduce(fn , mm) / sum
+
+print(str2float("1616.11"))
+
